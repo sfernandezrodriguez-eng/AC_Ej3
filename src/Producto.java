@@ -30,4 +30,26 @@ public class Producto implements Serializable {
 
         }
     }
+
+    public void leerSerial(){
+        try {
+            FileInputStream flujoArchivo = new FileInputStream("serial");
+            ObjectInputStream flujoObjetos = new ObjectInputStream(flujoArchivo);
+            Producto miProducto = new Producto("Cositas",12,12);
+            flujoObjetos.readObject(miProducto);
+            System.out.println("Se ha hecho");
+
+
+            flujoObjetos.close();
+            flujoArchivo.close();
+
+        }
+        catch (IOException e){
+            System.out.println("Sos bujarra");
+
+        }
+
+
+    }
+
 }
