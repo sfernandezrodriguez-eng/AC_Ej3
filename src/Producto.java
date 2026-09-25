@@ -37,6 +37,10 @@ public class Producto implements Serializable {
 
             Producto miProducto = (Producto) flujoObjetos.readObject();
 
+            System.out.println("[LOG] Nome producto "+miProducto.nome);
+            System.out.println("[LOG] Nome producto"+miProducto.num1);
+            System.out.println("[LOG] Nome producto"+miProducto.num2);
+
             System.out.println("Se ha hecho correctamente");
 
         } catch (IOException e) {
