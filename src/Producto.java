@@ -1,3 +1,4 @@
+import java.beans.Transient;
 import java.io.*;
 
 public class Producto implements Serializable {
@@ -5,10 +6,10 @@ public class Producto implements Serializable {
     int num1;
     double num2;
 
-    public Producto(String nombre, int numero1, int numero2) {
-        String nome=nombre;
-        int num1=numero1;
-        double num2=numero2;
+    public Producto(String nombre, int numero1, double numero2) {
+        this.nome=nombre;
+        this.num1=numero1;
+        this.num2=numero2;
     }
 
 
@@ -16,17 +17,12 @@ public class Producto implements Serializable {
         try {
             FileOutputStream flujoArchivo = new FileOutputStream("serial");
             ObjectOutputStream flujoObjetos = new ObjectOutputStream(flujoArchivo);
-            Producto miProducto = new Producto("Cositas",12,12);
-            flujoObjetos.writeObject(miProducto);
+            flujoObjetos.writeObject(this);
             System.out.println("Se ha hecho");
-
-
-            flujoObjetos.close();
-            flujoArchivo.close();
 
         }
         catch (IOException e){
-            System.out.println("Sos bujarra");
+            System.out.println("Sos bujarra "+ e.getMessage());
 
         }
     }
@@ -38,8 +34,8 @@ public class Producto implements Serializable {
             Producto miProducto = (Producto) flujoObjetos.readObject();
 
             System.out.println("[LOG] Nome producto "+miProducto.nome);
-            System.out.println("[LOG] Nome producto"+miProducto.num1);
-            System.out.println("[LOG] Nome producto"+miProducto.num2);
+            System.out.println("[LOG] Numero producto "+miProducto.num1);
+            System.out.println("[LOG] Numero2 producto "+miProducto.num2);
 
             System.out.println("Se ha hecho correctamente");
 
@@ -49,8 +45,7 @@ public class Producto implements Serializable {
             System.out.println("No se encontró la clase Producto: " + e.getMessage());
         }
     }
+}
 
-
-    }
 
 
