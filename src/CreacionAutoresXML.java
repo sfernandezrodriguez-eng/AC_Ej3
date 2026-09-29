@@ -55,7 +55,7 @@ public class CreacionAutoresXML {
             writer.flush();
             writer.close();
 
-            System.out.println("O ficheiro autores.xml xerouse correctamente.");
+            System.out.println("Se genero correctamente.");
 
         } catch (IOException | XMLStreamException e) {
             System.err.println("Erro ao xerar o ficheiro XML: " + e.getMessage());
